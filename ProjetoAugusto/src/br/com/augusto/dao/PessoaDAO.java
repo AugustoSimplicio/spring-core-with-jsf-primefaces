@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import br.com.augusto.domain.Pessoa;
@@ -13,7 +14,7 @@ import br.com.augusto.domain.Pessoa;
 public class PessoaDAO implements Service<Pessoa> {
 	
 	public void salvar(Pessoa p) {
-		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("pessoa");
+		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("systemadmin");
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 		try {
 			if (p != null) {
@@ -28,8 +29,8 @@ public class PessoaDAO implements Service<Pessoa> {
 		}
 	}
 
-	public List<Pessoa> getPessoas() {
-		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("pessoa");
+	public List<Pessoa> listar() {
+		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("systemadmin");
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 		List<Pessoa> pessoas = new ArrayList<Pessoa>();
 		try {
@@ -47,9 +48,9 @@ public class PessoaDAO implements Service<Pessoa> {
 
 	public Pessoa findById(Pessoa findPessoa) {
 		Pessoa p = null;
-		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("pessoa");
+		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("systemadmin");
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
-		List<Pessoa> pessoas = getPessoas();
+		List<Pessoa> pessoas = listar();
 		for (Pessoa pessoa : pessoas) {
 			if (pessoa.equals(findPessoa)) {
 				p = pessoa;
@@ -62,7 +63,7 @@ public class PessoaDAO implements Service<Pessoa> {
 
 	public boolean deletar(Pessoa pessoa) {
 		boolean removido = false;
-		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("pessoa");
+		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("systemadmin");
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 
 		try {
@@ -85,7 +86,7 @@ public class PessoaDAO implements Service<Pessoa> {
 	@Override
 	public void editar(Pessoa pessoaEditada) {
 		boolean editado = false;
-		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("pessoa");
+		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("systemadmin");
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 		try {
 			if (pessoaEditada != null) {

@@ -100,7 +100,7 @@ public abstract class AbstractMB<T> {
 	}
 
 	public void buscar() {
-		resultados = metodoFiltro(service.getPessoas(), obterFiltros());
+		resultados = metodoFiltro(service.listar(), obterFiltros());
 	}
 
 	public void chamarEdicao(T modelEditado) {

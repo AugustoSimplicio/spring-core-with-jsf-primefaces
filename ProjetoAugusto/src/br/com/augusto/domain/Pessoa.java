@@ -19,7 +19,6 @@ public class Pessoa {
 	private String email;
 	private TipoPessoaEnum tipoPessoa;
 	private String cpfCnpj;
-	
 
 	public Pessoa() {
 		this.tipoPessoa = TipoPessoaEnum.FISICA;
