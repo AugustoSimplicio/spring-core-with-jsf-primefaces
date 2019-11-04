@@ -20,6 +20,7 @@ public class Pessoa {
 	private TipoPessoaEnum tipoPessoa;
 	private String cpfCnpj;
 
+
 	public Pessoa() {
 		this.tipoPessoa = TipoPessoaEnum.FISICA;
 	}

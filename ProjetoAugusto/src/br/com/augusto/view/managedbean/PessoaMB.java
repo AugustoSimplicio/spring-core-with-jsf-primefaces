@@ -5,10 +5,12 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
 import br.com.augusto.dao.PessoaDAO;
 import br.com.augusto.dao.Service;
+import br.com.augusto.dao.Teste;
 import br.com.augusto.domain.Pessoa;
 import br.com.augusto.domain.enums.TipoPessoaEnum;
 import br.com.augusto.filtro.Filtro;
@@ -25,6 +27,9 @@ public class PessoaMB extends AbstractMB<Pessoa> {
 	private String filtroInputCpf;
 	private String filtroInputNome;
 	private String filtroInputEmail;
+	
+	@ManagedProperty(value = "teste")
+	private Teste teste;
 	
 	@Override
 	public List<Filtro<Pessoa>> obterFiltros() {
