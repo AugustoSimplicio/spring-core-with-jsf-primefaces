@@ -60,6 +60,10 @@ public class MenuView {
     public String fundo() {
         return "/pages/fundo.jsf";
     }
+    
+    public String cidadeEstado() {
+        return "/pages/cidadeestado.jsf";
+    }
  
     public String consultar() {
         return "/pages/pessoaconsultar.jsf";

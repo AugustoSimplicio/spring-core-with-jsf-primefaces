@@ -6,20 +6,19 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import br.com.augusto.domain.Pessoa;
+import br.com.augusto.domain.Fundo;
 
-public class PessoaDAO implements Service<Pessoa> {
+public class FundoServiceImpl implements Service<Fundo> {
 	
-	public void salvar(Pessoa p) {
+	public void salvar(Fundo fundo) {
 		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("systemadmin");
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 		try {
-			if (p != null) {
+			if (fundo != null) {
 				entityManager.getTransaction().begin();
-				entityManager.persist(p);
+				entityManager.persist(fundo);
 				entityManager.getTransaction().commit();
 				entityManager.close();
 				entityManagerFactory.close();
@@ -29,48 +28,49 @@ public class PessoaDAO implements Service<Pessoa> {
 		}
 	}
 
-	public List<Pessoa> listar() {
+	@SuppressWarnings("unchecked")
+	public List<Fundo> listar() {
 		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("systemadmin");
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
-		List<Pessoa> pessoas = new ArrayList<Pessoa>();
+		List<Fundo> fundos = new ArrayList<Fundo>();
 		try {
 			entityManager.getTransaction().begin();
-			Query query = entityManager.createQuery("select p from Pessoa p");
-			pessoas = query.getResultList();
+			Query query = entityManager.createQuery("select f from Fundo f");
+			fundos = query.getResultList();
 			entityManager.close();
 			entityManagerFactory.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 		}
-		return pessoas;
+		return fundos;
 	}
 
-	public Pessoa findById(Pessoa findPessoa) {
-		Pessoa p = null;
+	public Fundo findById(Fundo findFundo) {
+		Fundo f = null;
 		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("systemadmin");
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
-		List<Pessoa> pessoas = listar();
-		for (Pessoa pessoa : pessoas) {
-			if (pessoa.equals(findPessoa)) {
-				p = pessoa;
+		List<Fundo> fundos = listar();
+		for (Fundo fundo : fundos) {
+			if (fundo.equals(findFundo)) {
+				f = fundo;
 			}
 		}
 		entityManager.close();
 		entityManagerFactory.close();
-		return p;
+		return f;
 	}
 
-	public boolean deletar(Pessoa pessoa) {
+	public boolean deletar(Fundo fundo) {
 		boolean removido = false;
 		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("systemadmin");
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 
 		try {
-			if (pessoa != null) {
+			if (fundo != null) {
 
 				entityManager.getTransaction().begin();
-				entityManager.remove(entityManager.getReference(Pessoa.class, pessoa.getId()));
+				entityManager.remove(entityManager.getReference(Fundo.class, fundo.getId()));
 				entityManager.getTransaction().commit();
 				entityManager.close();
 				entityManagerFactory.close();
@@ -84,18 +84,16 @@ public class PessoaDAO implements Service<Pessoa> {
 	}
 
 	@Override
-	public void editar(Pessoa pessoaEditada) {
-		boolean editado = false;
+	public void editar(Fundo fundoEditado) {
 		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("systemadmin");
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 		try {
-			if (pessoaEditada != null) {
+			if (fundoEditado != null) {
 				entityManager.getTransaction().begin();
-				entityManager.merge(entityManager.getReference(Pessoa.class, pessoaEditada.getId()));
+				entityManager.merge(entityManager.getReference(Fundo.class, fundoEditado.getId()));
 				entityManager.getTransaction().commit();
 				entityManager.close();
 				entityManagerFactory.close();
-				editado = true;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

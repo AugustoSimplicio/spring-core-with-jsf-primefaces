@@ -8,7 +8,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
-import br.com.augusto.dao.PessoaDAO;
+import br.com.augusto.dao.PessoaServiceImpl;
 import br.com.augusto.dao.Service;
 import br.com.augusto.dao.Teste;
 import br.com.augusto.domain.Pessoa;
@@ -28,9 +28,13 @@ public class PessoaMB extends AbstractMB<Pessoa> {
 	private String filtroInputNome;
 	private String filtroInputEmail;
 	
-	@ManagedProperty(value = "teste")
+	@ManagedProperty(value = "#{teste}")
 	private Teste teste;
-	
+
+	public void setTeste(Teste teste) {
+		this.teste = teste;
+	}
+
 	@Override
 	public List<Filtro<Pessoa>> obterFiltros() {
 		List<Filtro<Pessoa>> filtros = new ArrayList<Filtro<Pessoa>>();
@@ -46,12 +50,13 @@ public class PessoaMB extends AbstractMB<Pessoa> {
 
 	@Override
 	protected Pessoa novoModel() {
+		System.out.println(teste.texto());
 		return new Pessoa();
 	}
 
 	@Override
 	protected Service<Pessoa> novoService() {
-		return new PessoaDAO();
+		return new PessoaServiceImpl();
 	}
 
 	public void setFiltroInputEmail(String filtroInputEmail) {
@@ -96,6 +101,7 @@ public class PessoaMB extends AbstractMB<Pessoa> {
 
 	@PostConstruct
 	public void init() {
+		
 		System.out.println(" Bean executado! ");
 	}
 

@@ -6,8 +6,7 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
-import br.com.augusto.dao.FundoDAO;
-import br.com.augusto.dao.Service;
+import br.com.augusto.dao.FundoServiceImpl;
 import br.com.augusto.domain.Fundo;
 import br.com.augusto.filtro.Filtro;
 import br.com.augusto.filtro.FiltroFundoPorNome;
@@ -25,8 +24,8 @@ public class FundoMB extends AbstractMB<Fundo> {
 	}
 
 	@Override
-	protected Service<Fundo> novoService() {
-		return new FundoDAO();
+	protected FundoServiceImpl novoService() {
+		return new FundoServiceImpl();
 	}
 
 	@Override
