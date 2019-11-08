@@ -61,8 +61,12 @@ public class MenuView {
         return "/pages/fundo.jsf";
     }
     
-    public String cidadeEstado() {
-        return "/pages/cidadeestado.jsf";
+    public String cidade() {
+        return "/pages/cidade.jsf";
+    }
+    
+    public String loja() {
+        return "/pages/cadastroloja.jsf";
     }
  
     public String consultar() {

@@ -14,6 +14,8 @@
 		<!-- Aqui são listadas todas as entidades -->
 		<class>br.com.augusto.domain.Pessoa</class>
 		<class>br.com.augusto.domain.Fundo</class>
+		<class>br.com.augusto.domain.Cidade</class>
+		<class>br.com.augusto.domain.Estado</class>
 
 		<properties>
 			<!-- Propriedades JDBC -->
@@ -21,10 +23,10 @@
 				value="com.mysql.jdbc.Driver" />
 
 			<property name="javax.persistence.jdbc.url"
-				value="jdbc:mysql://interadesenv.mysql.dbaas.com.br:3306/interadesenv" />
+				value="jdbc:mysql://estagiodesenv.mysql.dbaas.com.br:3306/estagiodesenv?useSSL=false" />
 
 			<property name="javax.persistence.jdbc.user"
-				value="interadesenv" />
+				value="estagiodesenv" />
 			<property name="javax.persistence.jdbc.password"
 				value="intera10" />
 

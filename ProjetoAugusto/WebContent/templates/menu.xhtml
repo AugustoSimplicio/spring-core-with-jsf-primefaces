@@ -17,14 +17,26 @@
 			</p:growl>
 
 			<p:panelMenu style="width:300px">
-				<p:submenu label="Cadastro">
-					<p:menuitem value="Pessoa" action="#{menuView.pessoa}"
-						icon="pi pi-save" />
-						<p:menuitem value="Fundo" action="#{menuView.fundo}"
-						icon="pi pi-save" />
-						<p:menuitem value="Cidade Estado" action="#{menuView.cidadeEstado}"
+				<p:submenu label="Pessoa">
+					<p:menuitem value="Cadastro" action="#{menuView.pessoa}"
 						icon="pi pi-save" />
 				</p:submenu>
+
+				<p:submenu label="Fundo">
+					<p:menuitem value="Cadastro" action="#{menuView.fundo}"
+						icon="pi pi-save" />
+				</p:submenu>
+
+				<p:submenu label="ADM">
+					<p:menuitem value="Cadastro de Cidades" action="#{menuView.cidade}"
+						icon="pi pi-save" />
+				</p:submenu>
+
+				<p:submenu label="Loja">
+					<p:menuitem value="Cadastro" action="#{menuView.loja}"
+						icon="pi pi-save" />
+				</p:submenu>
+
 			</p:panelMenu>
 		</h:form>
 	</ui:composition>

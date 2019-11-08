@@ -12,21 +12,21 @@
 			<h:form id="formilario">
 				<p:panel header="Cadastro Estado"
 					style="width:96%; text-align: center">
-					<h:panelGrid columns="2">
-						<p:outputLabel value="Estado:" />
-						<p:inputText id="estado" value="#{cidadeEstadoMB.estado.nome}"
-							required="true" label="Nome do Estado">
-							<f:validateLength minimum="2" />
-						</p:inputText>
+					<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+						<p:outputLabel for="estados" value="Estados" />
+						<p:selectOneMenu id="estados" value="#{cadastroCidadeMB.estado}"
+							dynamic="true">
+							<f:selectItem itemLabel="Selecione um Estado" itemValue="" />
+							<f:selectItems value="#{cadastroCidadeMB.estados}" var="estado"
+								itemLabel="#{estado.nome}" itemValue="#{estado}" />
+						</p:selectOneMenu>
 						<p:outputLabel value="Cidade:" />
-						<p:inputText id="cidade" value="#{cidadeEstadoMB.cidade.nome}"
+						<p:inputText id="cidade" value="#{cadastroCidadeMB.cidade.nome}"
 							required="true" label="Nome da Cidade">
 							<f:validateLength minimum="3" />
 						</p:inputText>
 						<p:commandButton value="Salvar" id="button-editar"
-							action="#{cidadeEstadoMB.salvar}" update="@all" />
-						<p:commandButton value="Cancelar" id="buttonCancelar"
-							immediate="true" update="@all" />
+							action="#{cadastroCidadeMB.salvar}" update="@this" />
 						<p:commandButton value="Limpar" ajax="true" immediate="true"
 							type="reset" />
 					</h:panelGrid>

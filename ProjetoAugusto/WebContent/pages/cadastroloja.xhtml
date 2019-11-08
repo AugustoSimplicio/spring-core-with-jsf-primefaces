@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<body>
+	<ui:composition template="/templates/template.xhtml">
+		<ui:define name="content">
+			<h:form id="frm">
+				<p:panel header="Cadastro Loja" style="margin-bottom:20px">
+
+					<div>Razao Social</div>
+					<p:inputText id="inputRazao"
+						value="#{cadastroLojaMB.loja.razaoSocial}">
+						<f:validateLength minimum="3" />
+					</p:inputText>
+
+					<div style="padding-top: 10px;">CNPJ</div>
+					<p:inputMask id="inputCnpj" mask="999.999.999-99"
+						value="cadastroLojaMB.loja.cnpj">
+						<f:validateLength minimum="11" />
+					</p:inputMask>
+
+					<div style="padding-top: 10px;">Estado</div>
+					<p:selectOneMenu id="estados" value="#{cadastroLojaMB.estado}" dynamic="true">
+					
+					<f:ajax listener="#{cadastroLojaMB.buscarCidades}" render="cidades" />
+						<f:selectItem itemLabel="Selecione um Estado" itemValue="" />
+						<f:selectItems value="#{cadastroLojaMB.estados}" var="estado"
+							itemLabel="#{estado.nome}" itemValue="#{estado}" />
+					</p:selectOneMenu>
+
+					<div style="padding-top: 10px;">Cidade</div>
+					<p:selectOneMenu id="cidades" value="#{cadastroLojaMB.cidade}"
+						dynamic="true">
+						<f:selectItem itemLabel="Selecione uma Cidade" itemValue="" />
+						<f:selectItems value="#{cadastroLojaMB.cidades}" var="cidade"
+							itemLabel="#{cidade.nome}" itemValue="#{cidade}" />
+					</p:selectOneMenu>
+
+				</p:panel>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</body>
+</html>
