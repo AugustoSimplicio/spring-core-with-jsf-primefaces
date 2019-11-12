@@ -6,6 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import br.com.augusto.domain.enums.TipoEndereco;
 import lombok.Data;
 
 @Entity
@@ -17,4 +18,5 @@ public class Logradouro {
 	private String descricao;
 	@OneToOne
 	private Cidade cidade;
+	private TipoEndereco endereco;
 }

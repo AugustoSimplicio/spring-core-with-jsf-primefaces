@@ -1,9 +1,14 @@
 package br.com.augusto.domain;
 
+import java.util.List;
+
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import br.com.augusto.domain.enums.TipoPessoaEnum;
 
@@ -17,8 +22,12 @@ public class Pessoa {
 	private Integer idade;
 	private String sexo;
 	private String email;
+	
+	@Enumerated(EnumType.STRING)
 	private TipoPessoaEnum tipoPessoa;
 	private String cpfCnpj;
+	@OneToMany
+	private List<Logradouro> logradouro;
 
 
 	public Pessoa() {

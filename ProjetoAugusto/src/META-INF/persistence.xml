@@ -16,6 +16,7 @@
 		<class>br.com.augusto.domain.Fundo</class>
 		<class>br.com.augusto.domain.Cidade</class>
 		<class>br.com.augusto.domain.Estado</class>
+		<class>br.com.augusto.domain.Logradouro</class>
 
 		<properties>
 			<!-- Propriedades JDBC -->

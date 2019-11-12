@@ -41,6 +41,7 @@ public class CidadeRepositoryImpl implements CidadeRepository {
 		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("systemadmin");
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 		TypedQuery<Cidade> typedQuery = entityManager.createQuery("select f from Cidade", Cidade.class);
+		typedQuery = entityManager.createNamedQuery("Cidade.findAll", Cidade.class);
 		List<Cidade> cidades = typedQuery.getResultList();
 		entityManager.close();
 		entityManagerFactory.close();
