@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<body>
+	<ui:composition template="/templates/template.xhtml">
+		<ui:define name="content">
+			<p:messages id="messages" showDetail="true" closable="true">
+				<p:autoUpdate />
+			</p:messages>
+			<h:form id="form-lojas">
+				<p:dataTable var="loja" value="#{listaLojaMB.lojas}"
+					paginator="true"
+					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="5,10,15">
+					<p:column headerText="Id">
+						<h:outputText value="#{loja.id}" />
+					</p:column>
+
+					<p:column headerText="razaoSocial">
+						<h:outputText value="#{loja.razaoSocial}" />
+					</p:column>
+
+					<p:column headerText="cnpj">
+						<h:outputText value="#{loja.cnpj}" />
+					</p:column>
+
+					<p:column headerText="logradouro">
+						<h:outputText value="#{loja.logradouro.descricao}" />
+					</p:column>
+
+					<p:column headerText="cidade">
+						<h:outputText value="#{loja.logradouro.cidade.nome}" />
+					</p:column>
+
+					<p:column headerText="estado">
+						<h:outputText value="#{loja.logradouro.cidade.estado.nome}" />
+					</p:column>
+				</p:dataTable>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</body>
+</html>

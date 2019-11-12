@@ -9,37 +9,53 @@
 <body>
 	<ui:composition template="/templates/template.xhtml">
 		<ui:define name="content">
+			<p:messages id="messages" showDetail="true" closable="true">
+				<p:autoUpdate />
+			</p:messages>
 			<h:form id="frm">
-				<p:panel header="Cadastro Loja" style="margin-bottom:20px">
+				<p:panel header="Cadastro Loja"
+					style="margin-bottom:20px;">
 
 					<div>Razao Social</div>
 					<p:inputText id="inputRazao"
-						value="#{cadastroLojaMB.loja.razaoSocial}">
+						value="#{cadastroLojaMB.loja.razaoSocial}" style="width:100%;">
 						<f:validateLength minimum="3" />
 					</p:inputText>
 
 					<div style="padding-top: 10px;">CNPJ</div>
-					<p:inputMask id="inputCnpj" mask="999.999.999-99"
-						value="cadastroLojaMB.loja.cnpj">
-						<f:validateLength minimum="11" />
+					<p:inputMask id="inputCnpj" mask="99.999.999/9999-99"
+						value="#{cadastroLojaMB.loja.cnpj}" style="width:100%;">
 					</p:inputMask>
 
-					<div style="padding-top: 10px;">Estado</div>
-					<p:selectOneMenu id="estados" value="#{cadastroLojaMB.estado}" dynamic="true">
-					
-					<f:ajax listener="#{cadastroLojaMB.buscarCidades}" render="cidades" />
+					<div style="padding-top: 10px; width:100%;">Estado</div>
+					<p:selectOneMenu id="estados" value="#{cadastroLojaMB.estado}"
+						dynamic="true" style="width:80%;">
+
+						<f:ajax listener="#{cadastroLojaMB.buscarCidades}"
+							render="cidades" />
 						<f:selectItem itemLabel="Selecione um Estado" itemValue="" />
 						<f:selectItems value="#{cadastroLojaMB.estados}" var="estado"
 							itemLabel="#{estado.nome}" itemValue="#{estado}" />
 					</p:selectOneMenu>
 
-					<div style="padding-top: 10px;">Cidade</div>
+					<div style="padding-top: 10px; width:100%;">Cidade</div>
 					<p:selectOneMenu id="cidades" value="#{cadastroLojaMB.cidade}"
-						dynamic="true">
+						dynamic="true" style="width:80%;">
 						<f:selectItem itemLabel="Selecione uma Cidade" itemValue="" />
 						<f:selectItems value="#{cadastroLojaMB.cidades}" var="cidade"
 							itemLabel="#{cidade.nome}" itemValue="#{cidade}" />
 					</p:selectOneMenu>
+
+					<div style="padding-top: 10px;">Endereço</div>
+					<p:inputText id="inputLogradouro" style="width:100%;"
+						value="#{cadastroLojaMB.logradouro.descricao}">
+						<f:validateLength minimum="3" />
+					</p:inputText>
+					<br />
+
+					<p:commandButton style="margin-top:40px; width:100%" value="Salvar"
+						id="button-salvar" action="#{cadastroLojaMB.salvar}"
+						update="@all" />
 
 				</p:panel>
 			</h:form>

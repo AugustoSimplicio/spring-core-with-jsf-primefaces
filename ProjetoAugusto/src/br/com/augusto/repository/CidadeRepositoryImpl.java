@@ -48,10 +48,10 @@ public class CidadeRepositoryImpl implements CidadeRepository {
 	}
 
 	@Override
-	public Cidade buscarPorId(Cidade cidade) {
+	public Cidade buscarPorId(Long id) {
 		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("systemadmin");
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
-		Cidade cidadeEncontrada = entityManager.find(Cidade.class, cidade.getId());
+		Cidade cidadeEncontrada = entityManager.find(Cidade.class, id);
 		entityManager.close();
 		entityManagerFactory.close();
 		return cidadeEncontrada;

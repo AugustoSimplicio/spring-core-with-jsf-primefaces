@@ -10,5 +10,8 @@ public class MessagesView {
     public void erroDeletar() {
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "Não foi possivel Deletar!."));
     }
-
+    
+    public void sucessoCadastro() {
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "Cadastrado com Sucesso!."));
+    }
 }

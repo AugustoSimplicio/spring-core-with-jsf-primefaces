@@ -8,7 +8,7 @@ import br.com.augusto.domain.Estado;
 public interface CidadeRepository {
 	public void salvar(Cidade cidade);
 	public List<Cidade> listar();
-	public Cidade buscarPorId(Cidade cidade);
+	public Cidade buscarPorId(Long id);
 	public void deletar(Cidade cidade);
 	public List<Cidade> buscarPorEstado(Estado estado);
 }

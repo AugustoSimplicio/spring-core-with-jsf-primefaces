@@ -11,14 +11,34 @@
 	<link rel="stylesheet" type="text/css"
 		href="#{facesContext.externalContext.requestContextPath}/style.css"
 		media="screen" />
+
+	<style>
+#j_idt6>div {
+	background: #444444;
+}
+</style>
 </h:head>
 
-<h:body style="padding:20px">
-	<div class="left" style="width: 100%; padding: 0 40px;">
-		<ui:include src="/templates/menu.xhtml" />
-	</div>
-	<div class="right">
-		<ui:insert name="content"></ui:insert>
-	</div>
+<h:body style="margin: 0;">
+	<p:layout fullPage="true">
+		<p:layoutUnit position="north"
+			style="background-color:#444444;overflow:hidden;">
+			<p:graphicImage value="pages/imagens/iconprimeface.png" width="200"
+				style="overflow:hidden;" />
+		</p:layoutUnit>
+
+		<p:layoutUnit position="center">
+			<ui:insert name="content"></ui:insert>
+		</p:layoutUnit>
+
+		<p:layoutUnit position="west">
+			<ui:include src="/templates/menu.xhtml" />
+		</p:layoutUnit>
+		<p:layoutUnit position="south"
+			style="color: #fff; font-size: 16px; font-weight: bold; text-align: center;">
+			Enterprise
+				Augusto &#169; 2019
+		</p:layoutUnit>
+	</p:layout>
 </h:body>
 </html>

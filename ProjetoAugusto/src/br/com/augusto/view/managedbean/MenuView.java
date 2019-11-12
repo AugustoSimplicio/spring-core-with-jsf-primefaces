@@ -72,5 +72,9 @@ public class MenuView {
     public String consultar() {
         return "/pages/pessoaconsultar.jsf";
     }
+    
+    public String listarLojas() {
+        return "/pages/listarlojas.jsf";
+    }
  
 }
